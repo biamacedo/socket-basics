@@ -66,7 +66,6 @@ io.on('connection', function(socket){
         if (message.text === '@currentUsers') {
             sendCurrentUsers(socket);
         } else {
-            moment.timestamp = moment().valueOf();
             // send message to every one including the user
             // .to(room) // only emmits message to room specified
             io.to(clientInfo[socket.id].room).emit('message', message);

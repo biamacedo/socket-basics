@@ -40,7 +40,8 @@ $form.on('submit', function(event){
 
     socket.emit('message', {
         name: name,
-        text: $message.val()
+        text: $message.val(),
+        timestamp: moment().valueOf()
     });
     $message.val('');
 });
