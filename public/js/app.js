@@ -38,10 +38,18 @@ $form.on('submit', function(event){
 
     var $message = $form.find('input[name=message]');
 
-    socket.emit('message', {
-        name: name,
-        text: $message.val(),
-        timestamp: moment().valueOf()
-    });
-    $message.val('');
+    if ($message.val() !== "") {
+        $('#alert-message').html('');
+
+        socket.emit('message', {
+            name: name,
+            text: $message.val(),
+            timestamp: moment().valueOf()
+        });
+        $message.val('');
+    } else {
+        $('#alert-message').html('<div class="alert alert-danger fade in">Please write a message before sending.</div>');
+    }
+
+
 });
